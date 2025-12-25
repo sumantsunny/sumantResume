@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 217 91% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 217 91% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 35%;
+
+    --radius: 0.5rem;
+
+    /* Custom Resume Tokens */
+    --resume-navy: 217 91% 25%;
+    --resume-slate: 215 25% 35%;
+    --resume-light-blue: 210 100% 97%;
+    --resume-divider: 214 32% 85%;
+    --resume-highlight: 217 91% 92%;
+    --resume-success: 142 76% 36%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212 27% 84%;
+
+    --resume-navy: 217 91% 70%;
+    --resume-slate: 215 20% 65%;
+    --resume-light-blue: 217 50% 12%;
+    --resume-divider: 217 33% 25%;
+    --resume-highlight: 217 50% 15%;
+    --resume-success: 142 76% 46%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+
+  /* ATS-friendly print styles */
+  @media print {
+    @page {
+      size: A4;
+      margin: 0.3cm;
+    }
+
+    * {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    body {
+      font-size: 8pt;
+      line-height: 1.2;
+      color: #000;
+      background: #fff;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+
+    .print-break-before {
+      page-break-before: always;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 0 !important;
+      margin: 0 !important;
+      transform: scale(0.85);
+      transform-origin: top left;
+      width: 117.65%;
+    }
+
+    .resume-container {
+      max-width: 100%;
+      padding: 0.4cm 0.5cm !important;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+      page-break-inside: avoid;
+    }
+
+    .resume-section-title {
+      font-size: 10pt !important;
+      margin-bottom: 0.15cm !important;
+      padding-bottom: 0.08cm !important;
+      margin-top: 0.2cm !important;
+    }
+
+    .space-y-8 > * + * {
+      margin-top: 0.25cm !important;
+    }
+
+    .resume-divider {
+      margin: 0.15cm 0 !important;
+      display: none;
+    }
+
+    h1 {
+      font-size: 14pt !important;
+      margin-bottom: 0.1cm !important;
+      padding-bottom: 0.05cm !important;
+    }
+
+    h2 {
+      font-size: 10pt !important;
+      margin-bottom: 0.1cm !important;
+    }
+
+    h3 {
+      font-size: 9pt !important;
+      margin-bottom: 0.05cm !important;
+    }
+
+    h4, h5, h6 {
+      font-size: 8pt !important;
+    }
+
+    p, li, span, div {
+      font-size: 8pt !important;
+      line-height: 1.2 !important;
+      margin-bottom: 0.05cm !important;
+    }
+
+    ul, ol {
+      margin-left: 0.3cm !important;
+      margin-top: 0.1cm !important;
+      margin-bottom: 0.1cm !important;
+    }
+
+    li {
+      margin-bottom: 0.05cm !important;
+    }
+
+    footer {
+      margin-top: 0.2cm !important;
+      padding-top: 0.15cm !important;
+      font-size: 7pt !important;
+    }
+
+    .mt-8 {
+      margin-top: 0.2cm !important;
+    }
+
+    .pt-6 {
+      padding-top: 0.15cm !important;
+    }
+
+    .border-t {
+      border-top-width: 1px !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .resume-section-title {
+    @apply text-lg font-semibold tracking-wide uppercase border-b-2 border-primary pb-2 mb-4;
+    font-family: 'Inter', sans-serif;
+    color: hsl(var(--resume-navy));
+  }
+
+  .resume-divider {
+    @apply border-t border-dashed my-4;
+    border-color: hsl(var(--resume-divider));
+  }
+
+  .skill-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium transition-all duration-200;
+    background: hsl(var(--resume-highlight));
+    color: hsl(var(--primary));
+  }
+
+  .skill-tag:hover {
+    @apply scale-105;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full bg-primary absolute -left-1.5 top-1.5 ring-4;
+    ring-color: hsl(var(--background));
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+}
